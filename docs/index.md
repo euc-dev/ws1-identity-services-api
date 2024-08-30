@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Getting Started
+title: VMware Identity Services
 hide:
   #- navigation
   - toc

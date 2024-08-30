@@ -145,7 +145,7 @@ markdown_extensions:
 
 # Navigation
 nav:
-  - Getting Started: index.md
+  - index.md
   - Authentication: Authentication.md
   - REST APIs: REST-APIs.md
     
