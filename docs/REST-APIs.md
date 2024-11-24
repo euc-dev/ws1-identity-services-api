@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Workspace ONE Identity Services REST APIs
+title: Omnissa Identity Services REST APIs
 hide:
   #- navigation
   - toc

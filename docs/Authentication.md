@@ -6,7 +6,7 @@ hide:
   - toc
 ---
 
-The Omnissa Identity Services Workspace ONE API supports the following methods to authenticate requests. Individual operations in the documentation will include their specific authentication types.
+The Omnissa Identity Services API supports the following methods to authenticate requests. Individual operations in the documentation will include their specific authentication types.
 
 ## admin
 

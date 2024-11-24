@@ -1,14 +1,14 @@
 {
     "openapi": "3.0.1",
     "info":     {
-        "contact": {"url": "https://www.vmware.com/en/company/contact_sales.html"},
+        "contact": {"url": "https://www.omnissa.com/contact-us/"},
         "license":         {
-            "name": "VMware Identity Manager Terms of Service",
-            "url": "https://www.vmware.com/en/company/contact_sales.html"
+            "name": "Omnissa General Terms",
+            "url": "https://www.omnissa.com/general-terms/"
         },
-        "title": "VMware Identity Services - Workspace ONE",
+        "title": "Omnissa Identity Services",
         "version": "latest",
-        "description": "The following swagger details the REST APIs available for Workspace ONE Identity Services."
+        "description": "The following swagger details the REST APIs available for Omnissa Identity Services."
     },
     "servers": [    {
         "url": "https://{api_host}",

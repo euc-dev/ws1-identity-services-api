@@ -5,7 +5,7 @@ hide:
   #- navigation
   - toc
 ---
-![Workspace ONE UEM](../../../assets/logos/Identity-Service-v-lm.png){ align=right }
+![Omnissa Identity Services](../../../assets/logos/Identity-Service-v-lm.png){ align=right }
 
 Welcome to the Omnissa Identity Services API Reference documentation.
 The documentation provides Getting Started information about how to set up an OAuth 2.0 client and obtain access tokens, 
@@ -20,7 +20,7 @@ The service provisions users and groups from cloud identity providers such as Mi
 Omnissa Identity Services is only available for new Workspace ONE tenants.
 
 Omnissa Identity Services supports integration with the following Workspace ONE cloud services:
-- Workspace ONE Access Cloud service
+- Omnissa Access Cloud service
 - Workspace ONE UEM 2212 or later
 
 Omnissa Identity Services supports the following use cases:
@@ -147,4 +147,4 @@ Utilise the REST APIs documented in the [REST API page](REST-APIs.md) within you
 
 ### For More Information
 
-- [VMware Workspace ONE, Omnissa Identity Services](https://docs.omnissa.com/bundle/ws1_access_directory/page/DirectoryIntegrationwithWorkspaceONEAccess.html). Overview of Omnissa Identity Services for Workspace ONE (SaaS).
+- [Omnissa Identity Services](https://docs.omnissa.com/bundle/ws1_access_directory/page/DirectoryIntegrationwithWorkspaceONEAccess.html). Overview of Omnissa Identity Services for Workspace ONE (SaaS).
