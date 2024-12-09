@@ -4,13 +4,13 @@
     "contact": {
       "url": "https://www.omnissa.com/contact-us/"
     },
+    "description": "The following swagger details the REST APIs available for Omnissa Identity Service.",
     "license": {
-      "name": "Omnissa General Terms",
-      "url": "https://www.omnissa.com/general-terms/"
+      "name": "Access Terms of Service",
+      "url": "https://www.omnissa.com/legal-center/"
     },
-    "title": "Omnissa Identity Services",
-    "version": "latest",
-    "description": "The following swagger details the REST APIs available for Omnissa Identity Services."
+    "title": "Omnissa Identity Service - Workspace ONE",
+    "version": "latest"
   },
   "servers": [
     {
@@ -26,11 +26,11 @@
   "paths": {
     "/acs/authorize": {
       "get": {
-        "description": "This is the starting point of the OAuth 2.0 flow to authenticate end users from your application.This authorization endpoint complies with the OAuth 2.0 specifications and must be used by clients to authenticate users and obtain an authorization code. To use this endpoint, your application must be registered as an OAuth 2.0 client in VMware Identity Manager and have the 'authorization_code' grant type enabled.",
+        "description": "This is the starting point of the OAuth 2.0 flow to authenticate end users from your application.This authorization endpoint complies with the OAuth 2.0 specifications and must be used by clients to authenticate users and obtain an authorization code. To use this endpoint, your application must be registered as an OAuth 2.0 client in Omnissa Identity Service and have the 'authorization_code' grant type enabled.",
         "operationId": "authorize",
         "parameters": [
           {
-            "description": "Specifies the callback endpoint in your application that will receive the authorization code. It must match the redirect_uri defined in your OAuth2.0 client registration in VMware Identity Manager. When sending the redirect_uri as a URL parameter it has to be URL encoded.",
+            "description": "Specifies the callback endpoint in your application that will receive the authorization code. It must match the redirect_uri defined in your OAuth2.0 client registration in Omnissa Identity Service. When sending the redirect_uri as a URL parameter it has to be URL encoded.",
             "example": "https://example-app.com/redirect?auth%3Doauth",
             "in": "query",
             "name": "redirect_uri",
@@ -42,7 +42,7 @@
             }
           },
           {
-            "description": "This is the identifier of the OAuth 2.0 client that was registered in VMware Identity Manager.",
+            "description": "This is the identifier of the OAuth 2.0 client that was registered in Omnissa Identity Service.",
             "example": "Example_AppID",
             "in": "query",
             "name": "client_id",
@@ -82,7 +82,7 @@
             }
           },
           {
-            "description": "Specifies the user's domain. If this parameter is specified, the login screen will skip the domain selection page. This can be used when it is known that a single domain is used or the domain information can be inferred automatically (from the username for example). This is a VMware Identity Manager optional parameter and is not in the OAuth 2.0 specification. ",
+            "description": "Specifies the user's domain. If this parameter is specified, the login screen will skip the domain selection page. This can be used when it is known that a single domain is used or the domain information can be inferred automatically (from the username for example). This is an Omnissa Identity Service optional parameter and is not in the OAuth 2.0 specification. ",
             "example": "example.com",
             "in": "query",
             "name": "domain",
@@ -91,7 +91,7 @@
             }
           },
           {
-            "description": "Specifies the user's login. In case your application already knows what user is going to login, and VMware Identity Manager will have to pass this user to a third-party IdP, then adding this parameter will send the username as part of the SAML request. This is a VMware Identity Manager optional parameter and is not in the OAuth 2.0 specification.",
+            "description": "Specifies the user's login. In case your application already knows what user is going to login, and Omnissa Identity Service will have to pass this user to a third-party IdP, then adding this parameter will send the username as part of the SAML request. This is an Omnissa Identity Service optional parameter and is not in the OAuth 2.0 specification.",
             "in": "query",
             "name": "u",
             "schema": {
@@ -135,7 +135,7 @@
             }
           },
           {
-            "description": "Space-separated string that specifies the acr values that the Authorization Server is being requested to use for processing this Authentication Request, with the values appearing in order of preference. On Vmware Identity Manager currently we support only single authentication method and if multiple authentication methods are provided, only the first one will be considered, others will be rejected.",
+            "description": "Space-separated string that specifies the acr values that the Authorization Server is being requested to use for processing this Authentication Request, with the values appearing in order of preference. On Omnissa Identity Service currently we support only single authentication method and if multiple authentication methods are provided, only the first one will be considered, others will be rejected.",
             "in": "query",
             "name": "acr_values",
             "schema": {
@@ -924,7 +924,14 @@
                       "pass_through_claims": false,
                       "open_id_user_identifier_attribute": "sub",
                       "internal_user_identifier_attribute": "ExternalId"
-                    }
+                    },
+                    "auth_type_list": [
+                      {
+                        "id": "4945fbdd-e80f-4aec-ad9d-aee6deed2acd",
+                        "auth_method_name": "auth_method_name_value",
+                        "saml_authn_context": "saml_authn_context_value"
+                      }
+                    ]
                   }
                 }
               },
@@ -966,7 +973,14 @@
                         "pass_through_claims": false,
                         "open_id_user_identifier_attribute": "sub",
                         "internal_user_identifier_attribute": "ExternalId"
-                      }
+                      },
+                      "auth_type_list": [
+                        {
+                          "id": "4945fbdd-e80f-4aec-ad9d-aee6deed2acd",
+                          "auth_method_name": "auth_method_name_value",
+                          "saml_authn_context": "saml_authn_context_value"
+                        }
+                      ]
                     }
                   }
                 },
@@ -1031,6 +1045,7 @@
             "content": {
               "application/octet-stream": {
                 "schema": {
+                  "format": "byte",
                   "type": "string"
                 }
               }
@@ -1448,6 +1463,11 @@
             "in": "query",
             "name": "sortOrder",
             "schema": {
+              "default": "ascending",
+              "enum": [
+                "ascending",
+                "descending"
+              ],
               "type": "string"
             }
           },
@@ -1523,7 +1543,7 @@
           "required": true
         },
         "responses": {
-          "200": {
+          "201": {
             "content": {
               "application/scim+json": {
                 "schema": {
@@ -1826,6 +1846,11 @@
             "in": "query",
             "name": "sortOrder",
             "schema": {
+              "default": "ascending",
+              "enum": [
+                "ascending",
+                "descending"
+              ],
               "type": "string"
             }
           },
@@ -1901,7 +1926,7 @@
           "required": true
         },
         "responses": {
-          "200": {
+          "201": {
             "content": {
               "application/scim+json": {
                 "schema": {
@@ -2245,26 +2270,26 @@
         "properties": {
           "issuer": {
             "description": "The identifier of the token's issuer. This is identical to the 'iss' Claim value in ID tokens.",
-            "example": "\"https://acme.vmwareidentity.com/acs\"",
+            "example": "https://acme.workspaceoneaccess.com/acs",
             "type": "string"
           },
           "authorization_endpoint": {
             "description": "The URL of the OAuth 2.0 Authorization endpoint",
-            "example": "\"https://acme.vmwareidentity.com/acs/authorize\"",
+            "example": "https://acme.workspaceoneaccess.com/acs/authorize",
             "type": "string"
           },
           "token_endpoint": {
             "description": "The URL of the OAuth 2.0 Token endpoint",
-            "example": "\"https://acme.vmwareidentity.com/acs/token\"",
+            "example": "https://acme.workspaceoneaccess.com/acs/token",
             "type": "string"
           },
           "jwks_uri": {
             "description": "The URL of JSON Web Key Set document",
-            "example": "\"https://acme.vmwareidentity.com/SAAS/API/1.0/REST/auth/token?attribute=publicKey&format=jwks\"",
+            "example": "https://acme.workspaceoneaccess.com/SAAS/API/1.0/REST/auth/token?attribute=publicKey&format=jwks",
             "type": "string"
           },
           "subject_types_supported": {
-            "description": "A list of the Subject identifier types that VMware Identity Manager supports",
+            "description": "A list of the Subject identifier types that Omnissa Identity Service supports",
             "items": {
               "enum": [
                 "pairwise",
@@ -2275,9 +2300,9 @@
             "type": "array"
           },
           "response_types_supported": {
-            "description": "A list of the OAuth 2.0 response_type values that VMware Identity Manager supports",
+            "description": "A list of the OAuth 2.0 response_type values that Omnissa Identity Service supports",
             "items": {
-              "description": "A list of the OAuth 2.0 response_type values that VMware Identity Manager supports",
+              "description": "A list of the OAuth 2.0 response_type values that Omnissa Identity Service supports",
               "type": "string"
             },
             "type": "array"
@@ -2300,26 +2325,26 @@
           },
           "userinfo_endpoint": {
             "description": "The URL of the user info endpoint",
-            "example": "\"https://acme.vmwareidentity.com/acs/userinfo\"",
+            "example": "https://acme.workspaceoneaccess.com/acs/userinfo",
             "type": "string"
           },
           "end_session_endpoint": {
             "description": "The URL at the OP to which an RP can perform a redirect to request that the end-user be logged out at the OP",
-            "example": "\"https://acme.vmwareidentity.com/post_logout\"",
+            "example": "https://acme.workspaceoneaccess.com/post_logout",
             "type": "string"
           },
           "claims_supported": {
-            "description": "A list of the claims VMware Identity Manager may be able to supply values for. Note that for privacy or other reasons, this might not be an exhaustive list.",
+            "description": "A list of the claims Omnissa Identity Service may be able to supply values for. Note that for privacy or other reasons, this might not be an exhaustive list.",
             "items": {
-              "description": "A list of the claims VMware Identity Manager may be able to supply values for. Note that for privacy or other reasons, this might not be an exhaustive list.",
+              "description": "A list of the claims Omnissa Identity Service may be able to supply values for. Note that for privacy or other reasons, this might not be an exhaustive list.",
               "type": "string"
             },
             "type": "array"
           },
           "scopes_supported": {
-            "description": "A list of the OAuth 2.0 scope values that VMware Identity Manager supports",
+            "description": "A list of the OAuth 2.0 scope values that Omnissa Identity Service supports",
             "items": {
-              "description": "A list of the OAuth 2.0 scope values that VMware Identity Manager supports",
+              "description": "A list of the OAuth 2.0 scope values that Omnissa Identity Service supports",
               "type": "string"
             },
             "type": "array"
@@ -2373,7 +2398,7 @@
             "type": "string"
           },
           "access_token": {
-            "description": "The requested access token. This token can now be used to call VMware Identity Manager APIs. For example, with the 'Bearer' token type, use 'Bearer &lt;this access token value&gt;' as the 'Authorization' header. The access token is a [JSON web token](\"https://jwt.io/\") (JWT).",
+            "description": "The requested access token. This token can now be used to call Omnissa Identity Service APIs. For example, with the 'Bearer' token type, use 'Bearer &lt;this access token value&gt;' as the 'Authorization' header. The access token is a [JSON web token](\"https://jwt.io/\") (JWT).",
             "example": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9xxxxHVcA76zjsGN2w...\"",
             "type": "string"
           },
@@ -2404,7 +2429,7 @@
         "description": "The form fields that can be used when requesting an access token",
         "properties": {
           "client_id": {
-            "description": "This is the identifier of the OAuth 2.0 client that was registered in VMware Identity Manager. Only used when a basic Authorization header is not present in the request.",
+            "description": "This is the identifier of the OAuth 2.0 client that was registered in Omnissa Identity Service. Only used when a basic Authorization header is not present in the request.",
             "example": "Example_AppID",
             "maxLength": 256,
             "pattern": "^[a-zA-Z0-9\\-_.@]+$",
@@ -2424,13 +2449,13 @@
             "type": "string"
           },
           "redirect_uri": {
-            "description": "Specifies the callback endpoint in your application that will receive the authorization code. It must match the redirect_uri defined in your OAuth2.0 client registration in VMware Identity Manager. When sending the redirect_uri as a URL parameter it has to be URL encoded. Required only if the grant_type is 'authorization_code'.",
+            "description": "Specifies the callback endpoint in your application that will receive the authorization code. It must match the redirect_uri defined in your OAuth2.0 client registration in Omnissa Identity Service. When sending the redirect_uri as a URL parameter it has to be URL encoded. Required only if the grant_type is 'authorization_code'.",
             "example": "https://example-app.com/redirect?auth%3Doauth",
             "maxLength": 2048,
             "type": "string"
           },
           "domain": {
-            "description": "Specifies the user's domain. If this parameter is specified, the login screen will skip the domain selection page. This can be used when it is known that a single domain is used or the domain information can be inferred automatically (from the username for example). This is a VMware Identity Manager optional parameter and is not in the OAuth 2.0 specification. Required only if the grant_type is 'password'.",
+            "description": "Specifies the user's domain. If this parameter is specified, the login screen will skip the domain selection page. This can be used when it is known that a single domain is used or the domain information can be inferred automatically (from the username for example). This is an Omnissa Identity Service optional parameter and is not in the OAuth 2.0 specification. Required only if the grant_type is 'password'.",
             "example": "example.com",
             "maxLength": 100,
             "pattern": "^[a-zA-Z0-9+\\-_.@\\s]+$",
@@ -2447,7 +2472,7 @@
             "type": "string"
           },
           "grant_type": {
-            "description": "Specifies the OAuth grant type the client is making. It must be one of the grant types that are defined in the OAuth2.0 client. VMware Identity Manager supports the following grant types from the OAuth specifications: authorization_code, password, client_credentials, and refresh_token. VMware Identity Manager also supports the grant type urn:ietf:params:oauth:grant-type:jwt-bearer for using JWTs for authorization as described in the JWT Bearer Token Profiles for OAuth 2.0 specifications.",
+            "description": "Specifies the OAuth grant type the client is making. It must be one of the grant types that are defined in the OAuth2.0 client. Omnissa Identity Service supports the following grant types from the OAuth specifications: authorization_code, password, client_credentials, and refresh_token. Omnissa Identity Service also supports the grant type urn:ietf:params:oauth:grant-type:jwt-bearer for using JWTs for authorization as described in the JWT Bearer Token Profiles for OAuth 2.0 specifications.",
             "enum": [
               "authorization_code",
               "password",
@@ -2652,7 +2677,7 @@
           },
           "iss": {
             "description": "The identifier for the authority that issued the token",
-            "example": "\"https://acme.vmwareidentity.com/acs\"",
+            "example": "https://acme.workspaceoneaccess.com/acs",
             "type": "string"
           },
           "sub": {
@@ -2723,7 +2748,7 @@
             "type": "string"
           },
           "secret": {
-            "description": "OAuth 2.0 Client secret (a string provided by an admin or a VMware Identity Manager auto-generated string). If secret string not provided, an auto-generated secret will be returned. For additional security, stored secret will not be returned in get/update API responses Public clients will not have any secret auto generated for them while confidential clients will always have clientSecret.",
+            "description": "OAuth 2.0 Client secret (a string provided by an admin or an Omnissa Identity Service auto-generated string). If secret string not provided, an auto-generated secret will be returned. For additional security, stored secret will not be returned in get/update API responses Public clients will not have any secret auto generated for them while confidential clients will always have clientSecret.",
             "example": "my-auth-grant-client1-secret",
             "type": "string"
           },
@@ -3043,7 +3068,7 @@
         "type": "object"
       },
       "BrokerIdentityProviderMedia": {
-        "description": "Represents the request information for VMware Identity Services OIDC Identity Provider API.",
+        "description": "Represents the request information for Omnissa Identity Service OIDC Identity Provider API.",
         "properties": {
           "_links": {
             "additionalProperties": {
@@ -3114,8 +3139,31 @@
               "patchable": "true",
               "allow-empty": "true"
             }
+          },
+          "auth_type_list": {
+            "description": "The list of auth methods associated with this identity provider. This field is only modifiable via patch, and will always be defaulted during create. When updating this field, the entire list of auth methods is updated. At least one auth method must be present for the identity provider. If auth methods are not provided during a patch, the existing auth methods will not be changed. Provide the uuid of the auth method when patching an existing auth method",
+            "items": {
+              "$ref": "#/components/schemas/IdPAuthTypeTO"
+            },
+            "type": "array",
+            "x-patching": {
+              "patchable": "true"
+            }
+          },
+          "idp_source_type": {
+            "description": "The source type of the identity provider. Certain customizations can be applied based on source. For example, subject is sent in login_hint parameter rather than in SAML request for source type 'ENTRA'.",
+            "enum": [
+              "GENERIC",
+              "ENTRA",
+              "OKTA"
+            ],
+            "example": "ENTRA",
+            "type": "string"
           }
         },
+        "required": [
+          "auth_type_list"
+        ],
         "type": "object"
       },
       "DirectoryTO": {
@@ -3152,7 +3200,7 @@
             }
           },
           "client_id": {
-            "description": "The external identity provider OAuth 2.0 client ID that is used by VMware Identity Services to federate to the external identity provider",
+            "description": "The external identity provider OAuth 2.0 client ID that is used by Omnissa Identity Service to federate to the external identity provider",
             "example": "my-auth-grant-client1",
             "type": "string",
             "x-patching": {
@@ -3172,14 +3220,14 @@
           },
           "oidc_user_attribute_mapping": {
             "additionalProperties": {
-              "description": "The mappings of the attribute names that are stored for users by VMware Identity Services to the claims in the 3rd party Identity Provider ID token. The keys are the VMware Identity Services attribute names and the values are the claims in the ID token.",
+              "description": "The mappings of the attribute names that are stored for users by Omnissa Identity Service to the claims in the 3rd party Identity Provider ID token. The keys are the Omnissa Identity Service attribute names and the values are the claims in the ID token.",
               "example": "{\"email\":\"user_email\"}",
               "type": "string",
               "x-patching": {
                 "patchable": "true"
               }
             },
-            "description": "The mappings of the attribute names that are stored for users by VMware Identity Services to the claims in the 3rd party Identity Provider ID token. The keys are the VMware Identity Services attribute names and the values are the claims in the ID token.",
+            "description": "The mappings of the attribute names that are stored for users by Omnissa Identity Service to the claims in the 3rd party Identity Provider ID token. The keys are the Omnissa Identity Service attribute names and the values are the claims in the ID token.",
             "example": {
               "email": "user_email"
             },
@@ -3250,6 +3298,24 @@
             "x-patching": {
               "patchable": "true"
             }
+          },
+          "login_hint_user_attribute": {
+            "default": "userName",
+            "description": "Name of user attribute used as login hint in OIDC flow",
+            "example": "userName",
+            "type": "string",
+            "x-patching": {
+              "patchable": "true"
+            }
+          },
+          "send_login_hint_in_request": {
+            "default": false,
+            "description": "Boolean representing if login hint should be passed through in request",
+            "example": false,
+            "type": "boolean",
+            "x-patching": {
+              "patchable": "true"
+            }
           }
         },
         "required": [
@@ -3280,14 +3346,14 @@
           },
           "saml_name_id_user_attribute_mapping": {
             "additionalProperties": {
-              "description": "VMware Identity Services user attribute mappings for each SAML attribute that is received in SAML response. The keys are the VMware Identity Services attribute names and the values are the SAML attribute names. If this field is not set, you must set saml_identity_user_attribute_mapping. If both fields are set, saml_identity_user_attribute_mapping take precedence",
+              "description": "User attribute mappings for each SAML attribute that is received in SAML response. The keys are the Omnissa Identity Service attribute names and the values are the SAML attribute names. If this field is not set, you must set saml_identity_user_attribute_mapping. If both fields are set, saml_identity_user_attribute_mapping take precedence",
               "example": "{\"param1\":\"param1_value\"}",
               "type": "string",
               "x-patching": {
                 "patchable": "true"
               }
             },
-            "description": "VMware Identity Services user attribute mappings for each SAML attribute that is received in SAML response. The keys are the VMware Identity Services attribute names and the values are the SAML attribute names. If this field is not set, you must set saml_identity_user_attribute_mapping. If both fields are set, saml_identity_user_attribute_mapping take precedence",
+            "description": "User attribute mappings for each SAML attribute that is received in SAML response. The keys are the Omnissa Identity Service attribute names and the values are the SAML attribute names. If this field is not set, you must set saml_identity_user_attribute_mapping. If both fields are set, saml_identity_user_attribute_mapping take precedence",
             "example": {
               "param1": "param1_value"
             },
@@ -3394,7 +3460,7 @@
             }
           },
           "idm_attribute": {
-            "description": "The name of the VMware Identity Services attribute mapped to the SAML attribute name which contains the identity information",
+            "description": "The name of the Omnissa Identity Service attribute mapped to the SAML attribute name which contains the identity information",
             "example": "userName",
             "type": "string",
             "x-patching": {
@@ -3441,6 +3507,46 @@
             }
           }
         },
+        "type": "object",
+        "x-patching": {
+          "patchable": "true"
+        }
+      },
+      "IdPAuthTypeTO": {
+        "description": "Auth method for identity provider",
+        "properties": {
+          "id": {
+            "description": "The unique identifier for the auth method",
+            "example": "8edacc5b-ff9d-4f8d-8575-6a137619fc88",
+            "format": "uuid",
+            "readOnly": true,
+            "type": "string",
+            "x-patching": {
+              "patchable": "false"
+            }
+          },
+          "auth_method_name": {
+            "description": "The name of the auth method",
+            "example": "example_auth_method_name",
+            "type": "string",
+            "x-patching": {
+              "patchable": "true",
+              "allow-empty": "false"
+            }
+          },
+          "saml_authn_context": {
+            "description": "The SAML authentication context mapped to this auth method.",
+            "example": "urn:oasis:names:tc:SAML:2.0:ac:classes:unspecified",
+            "type": "string",
+            "x-patching": {
+              "patchable": "true"
+            }
+          }
+        },
+        "required": [
+          "auth_method_name",
+          "saml_authn_context"
+        ],
         "type": "object",
         "x-patching": {
           "patchable": "true"
@@ -3529,7 +3635,7 @@
         "type": "object"
       },
       "SamlSpMetadataMedia": {
-        "description": "Represents the response information for VMware Identity Services SAML Service Provider metadata details.",
+        "description": "Represents the response information for Omnissa Identity Service SAML Service Provider metadata details.",
         "properties": {
           "acsUrl": {
             "description": "Assertion Consumer Service / Single sign-on URL",
@@ -3603,13 +3709,13 @@
           },
           "issuer": {
             "description": "Issuer information from the certificate",
-            "example": "C=US, O=myorg, CN=VMware Identity Manager",
+            "example": "C=US, O=myorg, CN=Example",
             "readOnly": true,
             "type": "string"
           },
           "subject": {
             "description": "Subject information from the certificate",
-            "example": "C=US, O=myorg, CN=VMware Identity Manager",
+            "example": "C=US, O=myorg, CN=Example",
             "readOnly": true,
             "type": "string"
           },
@@ -3653,8 +3759,11 @@
         "type": "object"
       },
       "BrokerDirectoryMedia": {
-        "description": "Represents a VMware Identity Services directory",
+        "description": "Represents a Omnissa Identity Service directory",
         "properties": {
+          "attributes": {
+            "$ref": "#/components/schemas/DirectoryAttributesTO"
+          },
           "_links": {
             "additionalProperties": {
               "$ref": "#/components/schemas/Link"
@@ -3742,6 +3851,16 @@
         },
         "type": "object"
       },
+      "DirectoryAttributesTO": {
+        "properties": {
+          "attemptDecodeExternalIdAsMSGuid": {
+            "title": "Attempt to convert the externalId attribute from Base64 encoded Object GUID, if it is not already formatted as a UUID.",
+            "type": "boolean"
+          }
+        },
+        "title": "Directory attributes",
+        "type": "object"
+      },
       "BrokerSyncClientConfigurationMedia": {
         "description": "Represents a Sync Client Configuration Media",
         "properties": {
@@ -3777,7 +3896,7 @@
             "type": "string"
           },
           "access_token": {
-            "description": "This token can be used to call VMware Identity Manager APIs. The access token is a [JSON web token](\"https://jwt.io/\") (JWT).",
+            "description": "This token can be used to call Omnissa Identity Service APIs. The access token is a [JSON web token](\"https://jwt.io/\") (JWT).",
             "example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9xxxxHVcA76zjsGN2w",
             "readOnly": true,
             "type": "string"
@@ -4019,6 +4138,7 @@
         "description": "Represents a SCIM 2 search request",
         "properties": {
           "sortOrder": {
+            "default": "ascending",
             "description": "A string indicating the order in which the sortBy parameter is applied",
             "enum": [
               "ascending",
@@ -4475,7 +4595,7 @@
   "tags": [
     {
       "name": "Authentication",
-      "description": "VMware Identity Services API endpoints used in authentication flows"
+      "description": "Omnissa Identity Service API endpoints used in authentication flows"
     },
     {
       "name": "oauth2",
@@ -4487,7 +4607,7 @@
     },
     {
       "name": "administration",
-      "description": "VMware Identity Services API management endpoints"
+      "description": "Omnissa Identity Service API management endpoints"
     },
     {
       "name": "oauth2Clients",
@@ -4511,7 +4631,7 @@
     },
     {
       "name": "scim2",
-      "description": "VMware Identity Services API Endpoints for SCIM 2.0 operations"
+      "description": "Omnissa Identity Service API Endpoints for SCIM 2.0 operations"
     },
     {
       "name": "groups",
