@@ -1,9 +1,9 @@
 ---
 layout: page
-title: Omnissa Identity Services REST APIs
+title: Omnissa Identity Service REST APIs
 hide:
   #- navigation
   - toc
 ---
 
-<swagger-ui src="vmware-identity-services-api-doc.json"/>
+<swagger-ui src="omnissa-identity-service-api-doc.json"/>
