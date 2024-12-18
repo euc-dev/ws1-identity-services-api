@@ -17,7 +17,7 @@ The Omnissa Identity Service APIs are designed for easy configuration and provid
 
 Omnissa Identity Service provides centralized user management for Omnissa Cloud services.
 The service provisions users and groups from cloud identity providers such as Microsoft Entra ID or Okta to Omnissa services and enables federated authentication to the identity provider.
-Omnissa Identity Service is only available for new Omnissa Access tenants.
+Omnissa Identity Service is only available for new Workspace ONE tenants.
 
 Omnissa Identity Service supports integration with the following Omnissa Cloud services:
 - Omnissa Access Cloud service
@@ -44,10 +44,10 @@ Omnissa Identity Service supports federated authentication against identity prov
 
 Before you start using the API, make sure you meet the following requirements:
 
-- You have a new Omnissa Access tenant.
-- You have an administrator account in the Omnissa Access portal.
-- You can log into your tenant's Omnissa Access portal.
-- You have completed the Omnissa Identity Service setup in the Omnissa Access portal under Accounts > End User Management > Get started. This includes enabling Omnissa Identity Service, configuring the integration with your third-party identity provider, and selecting the Omnissa services to use with the identity provider. For more information, see [Configuring User Provisioning and Identity Federation with Omnissa Identity Service](https://docs.omnissa.com/bundle/IdentityServices/page/GettingStartedwithIdentityServices.html).
+- You have a new Workspace ONE tenant.
+- You have an administrator account in the Workspace ONE portal.
+- You can log into your tenant's Workspace ONE portal.
+- You have completed the Omnissa Identity Service setup in the Workspace ONE portal under Accounts > End User Management > Get started. This includes enabling Omnissa Identity Service, configuring the integration with your third-party identity provider, and selecting the Omnissa services to use with the identity provider. For more information, see [Configuring User Provisioning and Identity Federation with Omnissa Identity Service](https://docs.omnissa.com/bundle/IdentityServices/page/GettingStartedwithIdentityServices.html).
 
 ### Step 1 - Create OAuth 2.0 Client from the UI
 
@@ -99,7 +99,7 @@ curl --location --request POST 'https://{baseURL}/acs/broker/oauth2-clients' \
 }'
 ```
 
-Replace `{baseURL}` with your Omnissa Access tenant URL and `{access_token}` with the access token that you obtained in Step 2 for authorization. You can set the token time to live ("access_token_ttl") field which determines the lifespan for all access tokens acquired by the client.
+Replace `{baseURL}` with your Workspace ONE tenant URL and `{access_token}` with the access token that you obtained in Step 2 for authorization. You can set the token time to live ("access_token_ttl") field which determines the lifespan for all access tokens acquired by the client.
 
 ### Step 4 - Get access token for the OAuth 2.0 Client
 
