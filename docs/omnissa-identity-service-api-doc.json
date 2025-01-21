@@ -531,6 +531,19 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "description": "Flag indicating whether associated token should be revoked or not on ruleset removal.",
+            "in": "query",
+            "name": "revoke_token_on_rule_set_removal",
+            "schema": {
+              "default": true,
+              "enum": [
+                true,
+                false
+              ],
+              "type": "boolean"
+            }
           }
         ],
         "requestBody": {
@@ -2551,16 +2564,16 @@
           "signature": {
             "type": "string"
           },
+          "nonce": {
+            "description": "String value used to associate a Client session with an ID Token. The value is passed through unmodified from the Authentication Request to the ID Token. ",
+            "type": "string"
+          },
           "customClaims": {
             "additionalProperties": {
               "type": "object"
             },
             "type": "object",
             "writeOnly": true
-          },
-          "nonce": {
-            "description": "String value used to associate a Client session with an ID Token. The value is passed through unmodified from the Authentication Request to the ID Token. ",
-            "type": "string"
           },
           "name": {
             "description": "The end-user's full name in displayable form",
@@ -2581,60 +2594,18 @@
           "jwsHeader": {
             "$ref": "#/components/schemas/JWSHeader"
           },
-          "updated_at": {
-            "description": "The time the end-user's information was last updated. Its value is a JSON number representing the number of seconds from 1970-01-01T0:0:0Z as measured in UTC until the date/time.",
-            "example": 1539988834,
-            "format": "int64",
-            "type": "integer"
-          },
-          "group_ids": {
-            "description": "The IDs of all groups the user belongs to",
-            "items": {
-              "description": "The IDs of all groups the user belongs to",
-              "type": "string"
-            },
-            "type": "array"
-          },
-          "group_names": {
-            "description": "The names of all groups the user belongs to",
-            "items": {
-              "description": "The names of all groups the user belongs to",
-              "type": "string"
-            },
-            "type": "array"
-          },
-          "c_hash": {
-            "description": "The hash of the access code. Base 64 URL encoded value. Returned when the ID Token is issued from the Authorization Endpoint with a \"code\" or \"code id_token\", or \"code id_token token\" as the response type.",
+          "given_name": {
+            "description": "The given name(s) or first name(s) of the end-user",
             "type": "string"
           },
-          "azp": {
-            "description": "Authorized party - the party to which the ID Token was issued. Contains the OAuth 2.0 Client ID of this party.",
-            "example": "MyOAuth2Client@e9d80cec-4e12-4970-828d-ae4557e33174",
+          "family_name": {
+            "description": "The surname(s) or last name(s) of the end-user",
             "type": "string"
           },
-          "at_hash": {
-            "description": "The access token hash value. Base64url encoded value.",
+          "subject": {
+            "description": "This is the same as the subject identifier. It is maintained to provide backward compatibility with SAAS.",
+            "example": "exampleuser@TENANT",
             "type": "string"
-          },
-          "phone_number": {
-            "description": "The end-user's preferred telephone number",
-            "type": "string"
-          },
-          "oid": {
-            "description": "Get the oid of the user",
-            "type": "string"
-          },
-          "exp": {
-            "description": "The expiration time on or after which the ID Token MUST NOT be accepted for processing. Its value is a JSON number representing the number of seconds from 1970-01-01T0:0:0Z as measured in UTC until the date/time.",
-            "example": 1539988834,
-            "format": "int64",
-            "type": "integer"
-          },
-          "iat": {
-            "description": "The time at which the JWT was issued. Its value is a JSON number representing the number of seconds from 1970-01-01T0:0:0Z as measured in UTC until the date/time.",
-            "example": 1539988834,
-            "format": "int64",
-            "type": "integer"
           },
           "aud": {
             "description": "The audience(s) that this ID Token is intended. The audience value is the OAuth 2.0 client_id of the Relying Party.",
@@ -2658,22 +2629,64 @@
             "description": "The authentication context used to authenticate the user",
             "type": "string"
           },
-          "subject": {
-            "description": "This is the same as the subject identifier. It is maintained to provide backward compatibility with SAAS.",
-            "example": "exampleuser@TENANT",
+          "azp": {
+            "description": "Authorized party - the party to which the ID Token was issued. Contains the OAuth 2.0 Client ID of this party.",
+            "example": "MyOAuth2Client@e9d80cec-4e12-4970-828d-ae4557e33174",
+            "type": "string"
+          },
+          "at_hash": {
+            "description": "The access token hash value. Base64url encoded value.",
+            "type": "string"
+          },
+          "c_hash": {
+            "description": "The hash of the access code. Base 64 URL encoded value. Returned when the ID Token is issued from the Authorization Endpoint with a \"code\" or \"code id_token\", or \"code id_token token\" as the response type.",
             "type": "string"
           },
           "email_verified": {
             "description": "The verified e-mail address of the end-user",
             "type": "boolean"
           },
-          "given_name": {
-            "description": "The given name(s) or first name(s) of the end-user",
+          "phone_number": {
+            "description": "The end-user's preferred telephone number",
             "type": "string"
           },
-          "family_name": {
-            "description": "The surname(s) or last name(s) of the end-user",
+          "updated_at": {
+            "description": "The time the end-user's information was last updated. Its value is a JSON number representing the number of seconds from 1970-01-01T0:0:0Z as measured in UTC until the date/time.",
+            "example": 1539988834,
+            "format": "int64",
+            "type": "integer"
+          },
+          "group_ids": {
+            "description": "The IDs of all groups the user belongs to",
+            "items": {
+              "description": "The IDs of all groups the user belongs to",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "group_names": {
+            "description": "The names of all groups the user belongs to",
+            "items": {
+              "description": "The names of all groups the user belongs to",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "oid": {
+            "description": "Get the oid of the user",
             "type": "string"
+          },
+          "exp": {
+            "description": "The expiration time on or after which the ID Token MUST NOT be accepted for processing. Its value is a JSON number representing the number of seconds from 1970-01-01T0:0:0Z as measured in UTC until the date/time.",
+            "example": 1539988834,
+            "format": "int64",
+            "type": "integer"
+          },
+          "iat": {
+            "description": "The time at which the JWT was issued. Its value is a JSON number representing the number of seconds from 1970-01-01T0:0:0Z as measured in UTC until the date/time.",
+            "example": 1539988834,
+            "format": "int64",
+            "type": "integer"
           },
           "iss": {
             "description": "The identifier for the authority that issued the token",
@@ -3930,13 +3943,13 @@
             },
             "type": "array"
           },
-          "itemsPerPage": {
-            "description": "The number of resources returned in a list  response page",
+          "totalResults": {
+            "description": "The total number of results returned by the list or query operation",
             "format": "int32",
             "type": "integer"
           },
-          "totalResults": {
-            "description": "The total number of results returned by the list or query operation",
+          "itemsPerPage": {
+            "description": "The number of resources returned in a list  response page",
             "format": "int32",
             "type": "integer"
           },
@@ -3945,12 +3958,12 @@
             "format": "int32",
             "type": "integer"
           },
+          "meta": {
+            "$ref": "#/components/schemas/MetaMedia"
+          },
           "externalId": {
             "description": "The SCIM resource external identifier",
             "type": "string"
-          },
-          "meta": {
-            "$ref": "#/components/schemas/MetaMedia"
           },
           "id": {
             "description": "The unique identifier of the SCIM resource",
@@ -3983,12 +3996,12 @@
             "example": "Example Group",
             "type": "string"
           },
+          "meta": {
+            "$ref": "#/components/schemas/MetaMedia"
+          },
           "externalId": {
             "description": "The SCIM resource external identifier",
             "type": "string"
-          },
-          "meta": {
-            "$ref": "#/components/schemas/MetaMedia"
           },
           "id": {
             "description": "The unique identifier of the SCIM resource",
@@ -4079,12 +4092,12 @@
             },
             "type": "array"
           },
+          "meta": {
+            "$ref": "#/components/schemas/MetaMedia"
+          },
           "externalId": {
             "description": "The SCIM resource external identifier",
             "type": "string"
-          },
-          "meta": {
-            "$ref": "#/components/schemas/MetaMedia"
           },
           "id": {
             "description": "The unique identifier of the SCIM resource",
@@ -4185,12 +4198,12 @@
             "description": "A string indicating the attribute whose value shall be used to order the returned responses",
             "type": "string"
           },
+          "meta": {
+            "$ref": "#/components/schemas/MetaMedia"
+          },
           "externalId": {
             "description": "The SCIM resource external identifier",
             "type": "string"
-          },
-          "meta": {
-            "$ref": "#/components/schemas/MetaMedia"
           },
           "id": {
             "description": "The unique identifier of the SCIM resource",
@@ -4211,27 +4224,6 @@
       "UserMedia": {
         "description": "Represents a SCIM 2 User resource",
         "properties": {
-          "ims": {
-            "description": "The instant messaging addresses for the user",
-            "items": {
-              "$ref": "#/components/schemas/UserInstantMessagingAddressMedia"
-            },
-            "type": "array"
-          },
-          "photos": {
-            "description": "The URIs of photos of the user",
-            "items": {
-              "$ref": "#/components/schemas/UserPhoto"
-            },
-            "type": "array"
-          },
-          "addresses": {
-            "description": "The physical mailing addresses for this user",
-            "items": {
-              "$ref": "#/components/schemas/UserAddressMedia"
-            },
-            "type": "array"
-          },
           "nickName": {
             "description": "The casual way to address the user",
             "example": "My Casual Name",
@@ -4262,6 +4254,27 @@
             },
             "type": "array"
           },
+          "ims": {
+            "description": "The instant messaging addresses for the user",
+            "items": {
+              "$ref": "#/components/schemas/UserInstantMessagingAddressMedia"
+            },
+            "type": "array"
+          },
+          "photos": {
+            "description": "The URIs of photos of the user",
+            "items": {
+              "$ref": "#/components/schemas/UserPhoto"
+            },
+            "type": "array"
+          },
+          "addresses": {
+            "description": "The physical mailing addresses for this user",
+            "items": {
+              "$ref": "#/components/schemas/UserAddressMedia"
+            },
+            "type": "array"
+          },
           "name": {
             "$ref": "#/components/schemas/UserNameMedia"
           },
@@ -4288,12 +4301,12 @@
             "example": "Example title",
             "type": "string"
           },
+          "meta": {
+            "$ref": "#/components/schemas/MetaMedia"
+          },
           "externalId": {
             "description": "The SCIM resource external identifier",
             "type": "string"
-          },
-          "meta": {
-            "$ref": "#/components/schemas/MetaMedia"
           },
           "id": {
             "description": "The unique identifier of the SCIM resource",
@@ -4314,135 +4327,17 @@
         ],
         "type": "object"
       },
-      "UserInstantMessagingAddressMedia": {
-        "description": "Instant messaging address for the user",
-        "properties": {
-          "display": {
-            "description": "A human readable name, primarily used for display purposes",
-            "example": "ims_example",
-            "type": "string"
-          },
-          "primary": {
-            "description": "A Boolean value indicating the 'primary' or preferred attribute value for this attribute. The primary attribute value 'true' MUST appear no more than once.",
-            "example": true,
-            "type": "boolean"
-          },
-          "value": {
-            "description": "Instant messaging address for the user",
-            "example": "example@skype.com",
-            "type": "string"
-          },
-          "type": {
-            "description": "A label indicating the attribute's function",
-            "enum": [
-              "aim",
-              "gtalk",
-              "icq",
-              "xmpp",
-              "msn",
-              "skype",
-              "qq",
-              "yahoo"
-            ],
-            "example": "skype",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "UserPhoto": {
-        "description": "The photo of the user",
-        "properties": {
-          "display": {
-            "description": "A human readable name, primarily used for display purposes",
-            "example": "Example photo",
-            "type": "string"
-          },
-          "primary": {
-            "description": "A Boolean value indicating the 'primary' or preferred attribute value for this attribute. The primary attribute value 'true' MUST appear no more than once.",
-            "example": true,
-            "type": "boolean"
-          },
-          "value": {
-            "description": "The URI of a photo of the user",
-            "example": "https://photos.example.com/profilephoto/72930000000Ccne/F",
-            "format": "uri",
-            "type": "string"
-          },
-          "type": {
-            "description": "A label indicating the attribute's function",
-            "enum": [
-              "photo",
-              "thumbnail"
-            ],
-            "example": "photo",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "UserAddressMedia": {
-        "description": "The full address of the user",
-        "properties": {
-          "formatted": {
-            "description": "The full mailing address, formatted for display or use with a mailing label",
-            "example": "456 Hollywood Blvd\nHollywood, CA 91608 USA",
-            "type": "string"
-          },
-          "streetAddress": {
-            "description": "The full street address component, which may include house number, street name, P.O. box, and multi-line extended street address information",
-            "example": "456 Hollywood Blvd",
-            "type": "string"
-          },
-          "postalCode": {
-            "description": "The zip code or postal code component",
-            "example": "91608",
-            "type": "string"
-          },
-          "primary": {
-            "description": "A Boolean value indicating the 'primary' or preferred attribute value for this attribute. The primary attribute value 'true' MUST appear no more than once.",
-            "example": true,
-            "type": "boolean"
-          },
-          "locality": {
-            "description": "The city or locality component",
-            "example": "Hollywood",
-            "type": "string"
-          },
-          "type": {
-            "description": "A label indicating the attribute's function; e.g., 'work' or 'home'",
-            "enum": [
-              "work",
-              "home",
-              "other"
-            ],
-            "example": "home",
-            "type": "string"
-          },
-          "region": {
-            "description": "The state or region component",
-            "example": "CA",
-            "type": "string"
-          },
-          "country": {
-            "description": "The country name component.When specified, the value MUST be in ISO 3166-1 \"alpha-2\" code format [ISO3166]; e.g., the United States and Sweden are \"US\" and \"SE\", respectively.",
-            "example": "USA",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
       "UserEmailMedia": {
         "description": "Represents an e-mail resource of the user",
         "properties": {
-          "display": {
-            "description": "A human readable name, primarily used for display purposes",
-            "example": "my work email",
-            "type": "string"
-          },
           "primary": {
             "description": "A Boolean value indicating the 'primary' or preferred attribute value for this attribute. The primary attribute value 'true' MUST appear no more than once.",
             "example": "true",
+            "type": "string"
+          },
+          "display": {
+            "description": "A human readable name, primarily used for display purposes",
+            "example": "my work email",
             "type": "string"
           },
           "value": {
@@ -4477,6 +4372,124 @@
               "other"
             ],
             "example": "work",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "UserInstantMessagingAddressMedia": {
+        "description": "Instant messaging address for the user",
+        "properties": {
+          "primary": {
+            "description": "A Boolean value indicating the 'primary' or preferred attribute value for this attribute. The primary attribute value 'true' MUST appear no more than once.",
+            "example": true,
+            "type": "boolean"
+          },
+          "display": {
+            "description": "A human readable name, primarily used for display purposes",
+            "example": "ims_example",
+            "type": "string"
+          },
+          "value": {
+            "description": "Instant messaging address for the user",
+            "example": "example@skype.com",
+            "type": "string"
+          },
+          "type": {
+            "description": "A label indicating the attribute's function",
+            "enum": [
+              "aim",
+              "gtalk",
+              "icq",
+              "xmpp",
+              "msn",
+              "skype",
+              "qq",
+              "yahoo"
+            ],
+            "example": "skype",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "UserPhoto": {
+        "description": "The photo of the user",
+        "properties": {
+          "primary": {
+            "description": "A Boolean value indicating the 'primary' or preferred attribute value for this attribute. The primary attribute value 'true' MUST appear no more than once.",
+            "example": true,
+            "type": "boolean"
+          },
+          "display": {
+            "description": "A human readable name, primarily used for display purposes",
+            "example": "Example photo",
+            "type": "string"
+          },
+          "value": {
+            "description": "The URI of a photo of the user",
+            "example": "https://photos.example.com/profilephoto/72930000000Ccne/F",
+            "format": "uri",
+            "type": "string"
+          },
+          "type": {
+            "description": "A label indicating the attribute's function",
+            "enum": [
+              "photo",
+              "thumbnail"
+            ],
+            "example": "photo",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "UserAddressMedia": {
+        "description": "The full address of the user",
+        "properties": {
+          "primary": {
+            "description": "A Boolean value indicating the 'primary' or preferred attribute value for this attribute. The primary attribute value 'true' MUST appear no more than once.",
+            "example": true,
+            "type": "boolean"
+          },
+          "formatted": {
+            "description": "The full mailing address, formatted for display or use with a mailing label",
+            "example": "456 Hollywood Blvd\nHollywood, CA 91608 USA",
+            "type": "string"
+          },
+          "streetAddress": {
+            "description": "The full street address component, which may include house number, street name, P.O. box, and multi-line extended street address information",
+            "example": "456 Hollywood Blvd",
+            "type": "string"
+          },
+          "postalCode": {
+            "description": "The zip code or postal code component",
+            "example": "91608",
+            "type": "string"
+          },
+          "locality": {
+            "description": "The city or locality component",
+            "example": "Hollywood",
+            "type": "string"
+          },
+          "type": {
+            "description": "A label indicating the attribute's function; e.g., 'work' or 'home'",
+            "enum": [
+              "work",
+              "home",
+              "other"
+            ],
+            "example": "home",
+            "type": "string"
+          },
+          "region": {
+            "description": "The state or region component",
+            "example": "CA",
+            "type": "string"
+          },
+          "country": {
+            "description": "The country name component.When specified, the value MUST be in ISO 3166-1 \"alpha-2\" code format [ISO3166]; e.g., the United States and Sweden are \"US\" and \"SE\", respectively.",
+            "example": "USA",
             "type": "string"
           }
         },
@@ -4539,13 +4552,13 @@
             },
             "type": "array"
           },
-          "itemsPerPage": {
-            "description": "The number of resources returned in a list  response page",
+          "totalResults": {
+            "description": "The total number of results returned by the list or query operation",
             "format": "int32",
             "type": "integer"
           },
-          "totalResults": {
-            "description": "The total number of results returned by the list or query operation",
+          "itemsPerPage": {
+            "description": "The number of resources returned in a list  response page",
             "format": "int32",
             "type": "integer"
           },
@@ -4554,12 +4567,12 @@
             "format": "int32",
             "type": "integer"
           },
+          "meta": {
+            "$ref": "#/components/schemas/MetaMedia"
+          },
           "externalId": {
             "description": "The SCIM resource external identifier",
             "type": "string"
-          },
-          "meta": {
-            "$ref": "#/components/schemas/MetaMedia"
           },
           "id": {
             "description": "The unique identifier of the SCIM resource",
