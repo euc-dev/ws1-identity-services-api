@@ -3142,7 +3142,7 @@
             "description": "List of certificate chains encoded in PEM format. It is optional for both creating and patching an identity provider. The certificates in the chain have to be separated by a line break and the encoded certificate between the BEGIN/END markers needs to be surrounded by line breaks. The chains in the array cannot be more than three and each chain can consist of maximum five certificates. When updating this field, the entire list of certificate chains is updated. There is no support for managing individual chains in the list.",
             "example": [
               "-----BEGIN CERTIFICATE-----\n<encoded-certificate-1>\n-----END CERTIFICATE-----\n-----BEGIN CERTIFICATE-----\n<encoded-certificate-2>\n-----END CERTIFICATE-----",
-              "-----BEGIN CERTIFICATE-----\n<another-encoded-certificate\n-----END CERTIFICATE-----"
+              "-----BEGIN CERTIFICATE-----\n<another-encoded-certificate>\n-----END CERTIFICATE-----"
             ],
             "items": {
               "type": "string"
