@@ -6,6 +6,8 @@ hide:
   - toc
 ---
 ![Omnissa Identity Service](../../../assets/logos/Identity-Service-v-lm.png){ align=right }
+!!! danger "Important Note"
+    Please see [Upcoming Changes to the API MIME type for Omnissa Access and Omnissa Identity Service (6000953) KB](https://kb.omnissa.com/s/article/6000953) for information on important updates to the Omnissa Identity Services API. These changes have been made to the swagger provided on the [Omnissa Identity Service REST APIs](REST-APIs.md) page.
 
 Welcome to the Omnissa Identity Service API Reference documentation.
 The documentation provides Getting Started information about how to set up an OAuth 2.0 client and obtain access tokens, 
