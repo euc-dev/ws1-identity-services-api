@@ -82,8 +82,8 @@ Next, create an OAuth 2.0 client for the tenant with the IDP_AND_DIRECTORY_ADMIN
 
 ```sh
 curl --location --request POST 'https://{baseURL}/acs/broker/oauth2-clients' \
---header 'Content-Type: application/vnd.vmware.horizon.manager.accesscontrol.broker.oauth2client.with.rule.sets+json' \
---header 'Accept: application/vnd.vmware.horizon.manager.accesscontrol.broker.oauth2client.with.rule.sets+json' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
 --header 'Authorization: Bearer {access_token}' \
 --data-raw '{
 "client_id": "my-auth-grant-client1",
