@@ -495,7 +495,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/vnd.vmware.horizon.manager.accesscontrol.broker.oauth2client.with.rule.sets+json": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/BrokerOAuth2ClientMedia"
                 }
@@ -548,7 +548,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/vnd.vmware.horizon.manager.accesscontrol.broker.oauth2client.with.rule.sets+json": {
+            "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/BrokerOAuth2ClientMedia"
               }
@@ -558,7 +558,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/vnd.vmware.horizon.manager.accesscontrol.broker.oauth2client.with.rule.sets+json": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/BrokerOAuth2ClientMedia"
                 }
@@ -615,7 +615,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/vnd.vmware.horizon.manager.accesscontrol.broker.oauth2client.secret.rotation+json": {
+            "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/BrokerOAuth2ClientStartSecretRotationMedia"
               }
@@ -676,7 +676,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/vnd.vmware.horizon.manager.accesscontrol.broker.oauth2client.list+json": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/BrokerOAuth2ClientList"
                 }
@@ -704,7 +704,7 @@
         "operationId": "createNewOAuth2Client",
         "requestBody": {
           "content": {
-            "application/vnd.vmware.horizon.manager.accesscontrol.broker.oauth2client.with.rule.sets+json": {
+            "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/BrokerOAuth2ClientMedia"
               }
@@ -714,7 +714,7 @@
         "responses": {
           "201": {
             "content": {
-              "application/vnd.vmware.horizon.manager.accesscontrol.broker.oauth2client.with.rule.sets+json": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/BrokerOAuth2ClientMedia"
                 }
@@ -797,7 +797,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/vnd.vmware.vidm.federation.broker.identityprovider+json": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/BrokerIdentityProviderMedia"
                 }
@@ -837,17 +837,18 @@
         ],
         "requestBody": {
           "content": {
-            "application/vnd.vmware.vidm.federation.broker.identityprovider+json": {
+            "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/BrokerIdentityProviderMedia"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
             "content": {
-              "application/vnd.vmware.vidm.federation.broker.identityprovider+json": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/BrokerIdentityProviderMedia"
                 }
@@ -884,7 +885,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/vnd.vmware.vidm.federation.broker.identityprovider.list+json": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/BrokerIdentityProviderList"
                 }
@@ -905,11 +906,11 @@
         ]
       },
       "post": {
-        "description": "This endpoint is responsible for creating an identity provider. Note that SAML type identity providers are currently not supported for vCenter.",
+        "description": "This endpoint is responsible for creating an identity provider.",
         "operationId": "createNewIdentityProvider",
         "requestBody": {
           "content": {
-            "application/vnd.vmware.vidm.federation.broker.identityprovider+json": {
+            "application/json": {
               "examples": {
                 "request_for_oidc": {
                   "description": "request_for_oidc",
@@ -958,7 +959,7 @@
         "responses": {
           "201": {
             "content": {
-              "application/vnd.vmware.vidm.federation.broker.identityprovider+json": {
+              "application/json": {
                 "examples": {
                   "response_for_oidc": {
                     "description": "response_for_oidc",
@@ -1030,7 +1031,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/vnd.vmware.vidm.federation.broker.samlspmetadata.details+json": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SamlSpMetadataMedia"
                 }
@@ -1109,7 +1110,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/vnd.vmware.vidm.usergroup.broker.directory.list+json": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/BrokerDirectoryList"
                 }
@@ -1134,7 +1135,7 @@
         "operationId": "createNewDirectory",
         "requestBody": {
           "content": {
-            "application/vnd.vmware.vidm.usergroup.broker.directory+json": {
+            "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/BrokerDirectoryMedia"
               }
@@ -1145,7 +1146,7 @@
         "responses": {
           "201": {
             "content": {
-              "application/vnd.vmware.vidm.usergroup.broker.directory+json": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/BrokerDirectoryMedia"
                 }
@@ -1225,7 +1226,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/vnd.vmware.vidm.usergroup.broker.directory+json": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/BrokerDirectoryMedia"
                 }
@@ -1268,7 +1269,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/vnd.vmware.vidm.usergroup.broker.directory+json": {
+            "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/BrokerDirectoryMedia"
               }
@@ -1279,7 +1280,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/vnd.vmware.vidm.usergroup.broker.directory+json": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/BrokerDirectoryMedia"
                 }
@@ -1328,7 +1329,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/vnd.vmware.vidm.usergroup.broker.directory.syncclientconfiguration+json": {
+              "application/json": {
                 "examples": {
                   "combined_response": {
                     "description": "combined_response",
@@ -1398,7 +1399,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/vnd.vmware.vidm.usergroup.broker.directory.syncclientconfiguration+json": {
+            "application/json": {
               "examples": {
                 "token_flow": {
                   "description": "token_flow",
@@ -1417,7 +1418,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/vnd.vmware.vidm.usergroup.broker.directory.syncclientconfiguration+json": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/BrokerSyncClientConfigurationMedia"
                 }
@@ -1806,6 +1807,17 @@
       "get": {
         "description": "This endpoint is responsible for fetching the currently authenticated user. For more information, check the specification: https://tools.ietf.org/html/rfc7644#section-3.11.",
         "operationId": "getMe",
+        "parameters": [
+          {
+            "description": "Returns resource with only requested attributes.",
+            "example": "name,userName",
+            "in": "query",
+            "name": "attributes",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -2594,12 +2606,46 @@
           "jwsHeader": {
             "$ref": "#/components/schemas/JWSHeader"
           },
-          "given_name": {
-            "description": "The given name(s) or first name(s) of the end-user",
+          "group_ids": {
+            "description": "The IDs of all groups the user belongs to",
+            "items": {
+              "description": "The IDs of all groups the user belongs to",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "group_names": {
+            "description": "The names of all groups the user belongs to",
+            "items": {
+              "description": "The names of all groups the user belongs to",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "phone_number": {
+            "description": "The end-user's preferred telephone number",
             "type": "string"
           },
-          "family_name": {
-            "description": "The surname(s) or last name(s) of the end-user",
+          "updated_at": {
+            "description": "The time the end-user's information was last updated. Its value is a JSON number representing the number of seconds from 1970-01-01T0:0:0Z as measured in UTC until the date/time.",
+            "example": 1539988834,
+            "format": "int64",
+            "type": "integer"
+          },
+          "email_verified": {
+            "description": "The verified e-mail address of the end-user",
+            "type": "boolean"
+          },
+          "at_hash": {
+            "description": "The access token hash value. Base64url encoded value.",
+            "type": "string"
+          },
+          "c_hash": {
+            "description": "The hash of the access code. Base 64 URL encoded value. Returned when the ID Token is issued from the Authorization Endpoint with a \"code\" or \"code id_token\", or \"code id_token token\" as the response type.",
+            "type": "string"
+          },
+          "oid": {
+            "description": "Get the oid of the user",
             "type": "string"
           },
           "subject": {
@@ -2629,53 +2675,6 @@
             "description": "The authentication context used to authenticate the user",
             "type": "string"
           },
-          "azp": {
-            "description": "Authorized party - the party to which the ID Token was issued. Contains the OAuth 2.0 Client ID of this party.",
-            "example": "MyOAuth2Client@e9d80cec-4e12-4970-828d-ae4557e33174",
-            "type": "string"
-          },
-          "at_hash": {
-            "description": "The access token hash value. Base64url encoded value.",
-            "type": "string"
-          },
-          "c_hash": {
-            "description": "The hash of the access code. Base 64 URL encoded value. Returned when the ID Token is issued from the Authorization Endpoint with a \"code\" or \"code id_token\", or \"code id_token token\" as the response type.",
-            "type": "string"
-          },
-          "email_verified": {
-            "description": "The verified e-mail address of the end-user",
-            "type": "boolean"
-          },
-          "phone_number": {
-            "description": "The end-user's preferred telephone number",
-            "type": "string"
-          },
-          "updated_at": {
-            "description": "The time the end-user's information was last updated. Its value is a JSON number representing the number of seconds from 1970-01-01T0:0:0Z as measured in UTC until the date/time.",
-            "example": 1539988834,
-            "format": "int64",
-            "type": "integer"
-          },
-          "group_ids": {
-            "description": "The IDs of all groups the user belongs to",
-            "items": {
-              "description": "The IDs of all groups the user belongs to",
-              "type": "string"
-            },
-            "type": "array"
-          },
-          "group_names": {
-            "description": "The names of all groups the user belongs to",
-            "items": {
-              "description": "The names of all groups the user belongs to",
-              "type": "string"
-            },
-            "type": "array"
-          },
-          "oid": {
-            "description": "Get the oid of the user",
-            "type": "string"
-          },
           "exp": {
             "description": "The expiration time on or after which the ID Token MUST NOT be accepted for processing. Its value is a JSON number representing the number of seconds from 1970-01-01T0:0:0Z as measured in UTC until the date/time.",
             "example": 1539988834,
@@ -2687,6 +2686,19 @@
             "example": 1539988834,
             "format": "int64",
             "type": "integer"
+          },
+          "azp": {
+            "description": "Authorized party - the party to which the ID Token was issued. Contains the OAuth 2.0 Client ID of this party.",
+            "example": "MyOAuth2Client@e9d80cec-4e12-4970-828d-ae4557e33174",
+            "type": "string"
+          },
+          "given_name": {
+            "description": "The given name(s) or first name(s) of the end-user",
+            "type": "string"
+          },
+          "family_name": {
+            "description": "The surname(s) or last name(s) of the end-user",
+            "type": "string"
           },
           "iss": {
             "description": "The identifier for the authority that issued the token",
@@ -3816,6 +3828,8 @@
               "description": "Directory domain names",
               "type": "string"
             },
+            "maxItems": 30,
+            "minItems": 0,
             "type": "array",
             "uniqueItems": true,
             "x-patching": {
